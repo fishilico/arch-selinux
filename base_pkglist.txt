@@ -8,7 +8,7 @@
 core/coreutils
 extra/cronie
 core/dbus
-core/dbus-broker
+core/dbus-broker = 36-4
 core/findutils
 core/iproute2
 core/logrotate
