@@ -78,7 +78,7 @@ build() {
   arch-meson "${pkgname/-selinux}" \
     -Dlogind=enabled \
     -Deconf=disabled \
-    -Dselinux=disabled \
+    -Dselinux=enabled \
     -Dpam_userdb=disabled \
     build
   meson compile -C build
