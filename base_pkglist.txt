@@ -17,6 +17,6 @@ core/pam
 core/pambase = 20230918-2
 core/psmisc
 core/shadow
-core/sudo
+core/sudo = 1.9.16.p2-2
 core/systemd
 core/util-linux
