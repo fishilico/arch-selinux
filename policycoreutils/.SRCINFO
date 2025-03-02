@@ -22,7 +22,7 @@ pkgbase = policycoreutils
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.8/policycoreutils-3.8.tar.gz
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.8/policycoreutils-3.8.tar.gz.asc
 	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
-	validpgpkeys = B8682847764DF60DF52D992CBC3905F235179CF1
+	validpgpkeys = 68D21823342A13683AEB3E4EFB4C685B5DC1C13E
 	sha256sums = 2c430b8662aafb3a757251e9d8d62ecaabc1c24be2b2a6ac6e87d3fa08b04e22
 	sha256sums = SKIP
 

@@ -16,7 +16,7 @@ pkgbase = secilc
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.8/secilc-3.8.tar.gz
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.8/secilc-3.8.tar.gz.asc
 	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
-	validpgpkeys = B8682847764DF60DF52D992CBC3905F235179CF1
+	validpgpkeys = 68D21823342A13683AEB3E4EFB4C685B5DC1C13E
 	sha256sums = 1db6835f1ebed659a3f6703df58571a8ef05a26f81472e25af07e185f1dbcd5a
 	sha256sums = SKIP
 
