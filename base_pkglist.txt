@@ -13,7 +13,7 @@ core/findutils
 core/iproute2
 core/logrotate
 core/openssh
-core/pam
+core/pam = 1.7.0-2
 core/pambase = 20230918-2
 core/psmisc
 core/shadow
