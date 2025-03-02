@@ -31,14 +31,6 @@ sha256sums=('0c3756bca047c9270281d7c4dcdecd000b72e38a183c930661eba9690839b541'
             'SKIP'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  # Apply https://github.com/SELinuxProject/selinux/commit/8e0e718bae53fff30831b92cd784151d475a20da
-  # libselinux: fix swig bindings for 4.3.0
-  patch -Np2 -i "../0001-libselinux-fix-swig-bindings-for-4.3.0.patch"
-}
-
 build() {
   cd "${pkgname}-${pkgver}"
 
