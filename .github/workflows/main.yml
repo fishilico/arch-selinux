@@ -113,6 +113,7 @@ jobs:
             systemctl enable sshd;
             sed -i 's/root:x:/root::/' /etc/passwd;
             touch /etc/vconsole.conf;
+            sed -i "s/^MODULES=()/MODULES=(ata_piix)/" -i /etc/mkinitcpio.conf;
             mkinitcpio -p linux;
             grub-install --target=i386-pc "'"${LOOP_DEVICE}"'";
             sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub;
