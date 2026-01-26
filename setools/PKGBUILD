@@ -18,8 +18,8 @@
 #   - replace setools 3.3.8 with setools3-libs and install setools then.
 
 pkgname=setools
-pkgver=4.5.1
-pkgrel=4
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
@@ -33,16 +33,8 @@ makedepends=('cython' 'python-tox')
 checkdepends=('checkpolicy' 'pyside6' 'python-pytest' 'python-pytest-qt')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
-        0001-setup.py-Move-static-definitions-to-pyproject.toml.patch
-)
-sha256sums=('25e47d00bbffd6046f55409c9ba3b08d9b1d5788cc159ea247d9e0ced8e482e7'
-            '27fd3673709767038fcd5253f13a057dac48b5c6884e07507ff3f1461223cd21')
-
-prepare() {
-  cd "${pkgname}"
-  patch -Np1 -i "../0001-setup.py-Move-static-definitions-to-pyproject.toml.patch"
-}
+source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('97319aabaf9d4237841ee60dcc9b2f291e73a761f317fd13e293ea2367d5806c')
 
 build() {
   cd "${pkgname}"
