@@ -24,14 +24,14 @@ pkgname=('systemd-selinux'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. We use proper version for pacman here (no dash for rc
 # release!), and change in source array below.
-pkgver=258.3
+pkgver=259.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
 makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' 'libelf'
-             'intltool' 'iptables' 'kmod' 'libarchive' 'libcap' 'libidn2' 'libgcrypt'
+             'intltool' 'iptables' 'kmod' 'libarchive' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow-selinux' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
@@ -56,32 +56,32 @@ source=("git+https://github.com/systemd/systemd#tag=v${pkgver/rc/-rc}?signed"
         # pacman / libalpm hooks
         'systemd-hook'
         '20-systemd-sysusers.hook'
-        '30-systemd-binfmt.hook'
-        '30-systemd-catalog.hook'
+        '21-systemd-tmpfiles.hook'
+        '25-systemd-binfmt.hook'
+        '25-systemd-catalog.hook'
+        '25-systemd-hwdb.hook'
+        '25-systemd-sysctl.hook'
         '30-systemd-daemon-reload-system.hook'
         '30-systemd-daemon-reload-user.hook'
-        '30-systemd-hwdb.hook'
-        '30-systemd-restart-marked.hook'
-        '30-systemd-sysctl.hook'
-        '30-systemd-tmpfiles.hook'
-        '30-systemd-udev-reload.hook'
-        '30-systemd-update.hook')
-sha512sums=('5176b59b638a09a1ffc5523059420c6e48d6f776f7450ec055074bf09c755fac71bdd38d10f08febe98f992087ec6e7f61fcb6556639c789aa917e3e4e59c495'
-            'beb15210d8afe69e1e47c99a81da5967428ccc64ece85b8a843333cb741eda061ae7a91a79cec8a1136a624e93e63140013986499589bf10edcc52d865729377'
+        '35-systemd-restart-marked.hook'
+        '35-systemd-udev-reload.hook'
+        '35-systemd-update.hook')
+sha512sums=('6d39209c4168c3de01399e4dbb7958961790e4c4e508cd1153038daa62620ab74bd14307237f738c2b22cb61c4c235826a48c18ce38dba3df2086a28deb0bad1'
+            'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             '30a408b5491ea59ec6ff6e773ea587fe12900c9b8169a0e16451d1cc6a452f2424e6ce1ee595448ff009b88fcbadf4cc4ae70a553235bae4a31aa1ec12a0c777'
             '05a3b19a2132c8c3048a66f2d06a9f8790e9c84c9ebdacc358456e38c5ebc8c02c542838f6aca3301f19ae83bc9fda66e701c682624dd5cf9fb119e452338a56'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
+            'da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
+            'a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154'
+            '9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de'
             'a436d3f5126c6c0d6b58c6865e7bd38dbfbfb7babe017eeecb5e9d162c21902cbf4e0a68cf3ac2f99815106f9fa003b075bd2b4eb5d16333fa913df6e2f3e32a'
             '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
-            'a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154'
             'f6b154fdc612916d7788720cf703e34255b43ba2d19413de5f3f63f07508f4ce561ca138f987c2118c7128e1dfb01976b0ac7d5efee4d9ebaadd180e70fa013e'
-            '9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de'
-            'da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
@@ -165,6 +165,7 @@ build() {
     -Dman=enabled
     -Dselinux=enabled
     -Dsshdprivsepdir=/usr/share/empty.sshd
+    -Dsysupdated=enabled
     -Dvmlinux-h=provided
     -Dvmlinux-h-path=/usr/src/linux/vmlinux.h
 
@@ -206,11 +207,10 @@ package_systemd-selinux() {
     'MIT-0' # documentation and config files
   )
   depends=("systemd-libs-selinux=${pkgver}"
-           'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
+           'acl' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+           'dbus-units' 'kbd' 'kmod' 'hwdata'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam-selinux'
-           'libelf' 'libseccomp' 'libseccomp.so' 'util-linux-selinux' 'libblkid.so'
-           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
+           'libelf' 'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit'
            'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -315,11 +315,15 @@ package_systemd-selinux() {
   # handle uncommon license
   install -d -m0755 "$pkgdir/usr/share/licenses/$pkgbase"
   ln -s -t "$_" /usr/share/doc/systemd/LICENSES/MIT-0.txt
+
+  # symlink kernel-install to installkernel
+  ln -s kernel-install "$pkgdir"/usr/bin/installkernel
+  ln -s kernel-install.8.gz "$pkgdir"/usr/share/man/man8/installkernel.8.gz
 }
 
 package_systemd-libs-selinux() {
   pkgdesc='systemd client libraries with SELinux support'
-  depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd' 'libselinux')
+  depends=('glibc' 'gcc-libs' 'libgcrypt' 'lz4' 'xz' 'zstd' 'libselinux')
   license+=(
     'CC0-1.0' # siphash
     'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
