@@ -11,7 +11,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=coreutils-selinux
-pkgver=9.9
+pkgver=9.10
 pkgrel=1
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
@@ -48,9 +48,9 @@ validpgpkeys=(
  6C37DC12121A5006BC1DB804DF6FD971306037D9 # Pádraig Brady
 )
 options=(!lto)
-b2sums=('7798d7ba5f9d7f336ad4f9dfd2ae67244e335c898743f0f4fcd735ab6a6799c25bb4fa8ad7bf1fba5ef8a9da832d3d44863bb9fcadcfc2a20ab53c0172b47210'
+b2sums=('7f78aa9c87f4faebc7ae9b07a18c550fb34d63dfeaeede8e55e29bfe0bedc909959eac5f1c8d91bb9ca3f78ec0bc4b9d02a8f2cb96eb31c92d66bdd0d02c0e2e'
         'SKIP'
-        '31e67d084731be25d01fd7e0d78e774a303dfdd553abb48c6a4fd5515906ee884f00b03f73d6f043dac593e0747a07b4ce3506510ab08422ad4c226c797bd249'
+        '31614bbd57ff4f569b646f89e6f16f26d14d8293b316c3321587699bd25ee71b8e79fa96fbe6cef4f0b3e3ed5c9c67a7920d9ec6140b6b30fd83d9eb1bf0f282'
         'SKIP')
 
 prepare() {
