@@ -30,7 +30,7 @@ optdepends=('python-graphviz: for seinfoflow, sedta, apol'
             'python-pyqt6: needed for graphical tools'
             'qt6-tools: display apol help with Qt Assistant')
 makedepends=('cython' 'python-tox')
-checkdepends=('checkpolicy' 'pyside6' 'python-pytest' 'python-pytest-qt')
+checkdepends=('checkpolicy' 'python-pyqt6' 'python-pytest' 'python-pytest-qt')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
@@ -46,7 +46,13 @@ check() {
   cd "${pkgname}"
   # Instructions from https://github.com/SELinuxProject/setools/blob/4.5.1/README.md#unit-tests
   python setup.py build_ext -i
-  pytest tests
+
+  # Work around failing test when PySide6 is installed by forcing to use PyQt6
+  # instead (cf. documentation of pytest-qt:
+  # https://pytest-qt.readthedocs.io/en/latest/intro.html#requirements )
+  # https://github.com/archlinuxhardened/selinux/issues/141
+  # https://github.com/SELinuxProject/setools/issues/160
+  PYTEST_QT_API='pyqt6' pytest tests
 }
 
 package() {
