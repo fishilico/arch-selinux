@@ -117,6 +117,8 @@ install_libreport() {
     MAKEPKGDIR="$(mktemp -d -p "${TMPDIR:-/tmp}" makepkg-libreport-XXXXXX)"
     git -C "$MAKEPKGDIR" clone https://aur.archlinux.org/satyr.git || exit $?
     (cd "$MAKEPKGDIR/satyr" && makepkg -si --noconfirm --asdeps) || exit $?
+    git -C "$MAKEPKGDIR" clone https://aur.archlinux.org/libxmlrpc.git || exit $?
+    (cd "$MAKEPKGDIR/libxmlrpc" && makepkg -si --noconfirm --asdeps) || exit $?
     git -C "$MAKEPKGDIR" clone https://aur.archlinux.org/libreport.git || exit $?
     # Remove python2 dependency
     sed "s/^\(makedepends=.*\) 'python2'/\1/" -i "$MAKEPKGDIR/libreport/PKGBUILD"
