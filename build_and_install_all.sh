@@ -126,6 +126,44 @@ install_libreport() {
     rm -rf "$MAKEPKGDIR"
 }
 
+# Install python-fastmcp-slim package from the AUR, if it is not already installed
+install_python_fastmcp_slim() {
+    local MAKEPKGDIR
+    if pacman -Qi python-fastmcp-slim > /dev/null 2>&1
+    then
+        return 0
+    fi
+    if ! pacman -Qi python-uv-dynamic-versioning > /dev/null 2>&1
+    then
+        # python-fastmcp-slim requires python-uv-dynamic-versioning but does not list it in its dependencies
+        sudo pacman -S --noconfirm --asdeps python-uv-dynamic-versioning
+    fi
+    MAKEPKGDIR="$(mktemp -d -p "${TMPDIR:-/tmp}" makepkg-python-fastmcp-slim-XXXXXX)"
+    for PKG in \
+        python-docstring-parser \
+        python-standardwebhooks \
+        python-anthropic \
+        python-rich-rst \
+        python-cyclopts \
+        python-google-genai \
+        python-pdm-pep517 \
+        python-jsonref \
+        python-openapi-pydantic \
+        python-beartype \
+        python-py-key-value-aio \
+        python-uncalled-for \
+        python-fastmcp-slim
+    do
+        if ! pacman -Qi "$PKG" > /dev/null 2>&1
+        then
+            git -C "$MAKEPKGDIR" clone "https://aur.archlinux.org/${PKG}.git" || exit $?
+            (cd "$MAKEPKGDIR/$PKG" && makepkg -si --noconfirm --asdeps --nocheck < /dev/null) || exit $?
+        fi
+    done
+    rm -rf "$MAKEPKGDIR"
+}
+
+
 # Parse options
 UPGRADE_GIT_PACKAGE=false
 while getopts ":gh" OPT
@@ -163,14 +201,16 @@ build_and_install libsepol
 build_and_install libselinux
 build_and_install checkpolicy
 build_and_install secilc
-# setools 3.3.8-5 Makefile has dependencies issues when installing __init__.py for qpol
-# (install command can be invoked before the destination directory is created)
-build_and_install setools MAKEFLAGS="-j1"
 build_and_install libsemanage
 build_and_install mcstrans
 build_and_install policycoreutils
 build_and_install semodule-utils
 build_and_install restorecond
+# setools 3.3.8-5 Makefile has dependencies issues when installing __init__.py for qpol
+# (install command can be invoked before the destination directory is created), so force -j1
+# setools 4.7.0 introduced FastMCP dependency, packaged in the AUR
+install_python_fastmcp_slim
+build_and_install setools MAKEFLAGS="-j1"
 build_and_install selinux-python
 build_and_install selinux-gui
 build_and_install selinux-dbus-config
