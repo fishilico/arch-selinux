@@ -61,6 +61,7 @@ Now we start replacing core packages:
 * systemd-selinux
 * logrotate-selinux
 * dbus-selinux
+* dbus-broker-selinux
 
 Optional but very nice to have:
 * openssh-selinux findutils-selinux iproute2-selinux psmisc-selinux
