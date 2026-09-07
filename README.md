@@ -36,18 +36,18 @@ replace any official Arch Linux packages:
 
 * libsepol
 * libselinux
-* secilc
 * checkpolicy
-* setools
+* secilc
 * libsemanage
-* semodule-utils
-* policycoreutils
-* selinux-dbus-config
-* selinux-gui
-* selinux-python
-* selinux-sandbox
 * mcstrans
+* policycoreutils
+* semodule-utils
 * restorecond
+* setools
+* selinux-python
+* selinux-gui
+* selinux-dbus-config
+* selinux-sandbox
 
 This makes it possible to install a pacman hook which relabels files when installing and updating packages:
 * selinux-alpm-hook
@@ -56,10 +56,13 @@ Now we start replacing core packages:
 
 * pambase-selinux
 * pam-selinux
-* coreutils-selinux shadow-selinux cronie-selinux sudo-selinux
+* coreutils-selinux
+* logrotate-selinux
+* shadow-selinux
+* cronie-selinux
+* sudo-selinux
 * util-linux-selinux
 * systemd-selinux
-* logrotate-selinux
 * dbus-selinux
 * dbus-broker-selinux
 
